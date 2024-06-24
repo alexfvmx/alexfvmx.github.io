@@ -77,9 +77,22 @@ const productos = [
 
 ];
 
+
+
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+
 const contenedorProductos = document.querySelector(".productos");
 
-productos.forEach(producto => {
+const productosAleatorios = shuffle(productos);
+
+productosAleatorios.forEach(producto => {
     const productoHTML = `
         <div class="producto">
             <img src="${producto.imagen}" alt="${producto.nombre}">
@@ -90,3 +103,8 @@ productos.forEach(producto => {
     `;
     contenedorProductos.innerHTML += productoHTML;
 });
+
+
+
+
+
